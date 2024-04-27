@@ -27,17 +27,58 @@
                 <a href="#" style="color: black; font-weight: bolder;">EN<i class="fa-solid fa-globe"
                         style="color: black;"></i></a>
             </button>
-            <ul class="dropdown-menu bg-dark">
+            <ul class="dropdown-menu bg-dark" style="z-index: 1100;">
                 <li><a class="dropdown-item" href="#" style="color: white;">Engilsh</a></li>
                 <li><a class="dropdown-item" href="#" style="color: white;">Türkçe</a></li>
                 <li><a class="dropdown-item" href="#" style="color: white;">Espanol</a></li>
             </ul>
         </div>
+        <div class="movie">
+            <div class="dropdown-center">
+                <button class="btn btn-secondary dropdown-toggle dark" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false" style="background-color: transparent; border: none;">
+                    <a href="#" style="color: black; font-weight: bolder;">Sort Films<i class="fa-solid fa-globe"
+                            style="color: black;"></i></a>
+                </button>
+                <ul class="dropdown-menu bg-dark" style="z-index: 1100;">
+                    <li><a class="dropdown-item" href="#" style="color: white;" id="a-z"><i class="fa-solid fa-arrow-down-wide-short" style="margin-right: 0.3rem;"></i>A-z</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#" style="color: white;" id="z-a"><i class="fa-solid fa-arrow-up-wide-short"style="margin-right: 0.3rem;"></i>Z-a</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="input sticky-top">
-        <input type="text" placeholder="Name Surname">
-        <input type="email" placeholder="E-mail">
-        <button class="signup"><a href="#signup">Sign Up</a></button>
+        <form action="submit-url" method="post">
+            <input type="text" name="name" placeholder="Name Surname" style="margin-right:1rem;">
+            <input type="search" name="search" placeholder="Search"style="margin-right:1rem;" id="search">
+            <button type="submit" class="signup">Sign Up</button>
+        </form>
+    </div>
+    
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner" style="height: 40rem; ">
+            <div class="carousel-item active">
+                <img src="https://i.ytimg.com/vi/YF1eYbfbH5k/maxresdefault.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://wallpapers.com/images/hd/netflix-la-casa-de-papel-90ibvjkudiip2neq.jpg"
+                    class="d-block w-100" alt="..." style="object-fit: cover;">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.ytimg.com/vi/8YvHUbHu3VU/maxresdefault.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
     <div class="movies container" id="films">
     </div>
@@ -57,7 +98,9 @@
     </div>
     <div class="footer">
         <img src="https://wimage.exxen.com/img/landing/devices.svg" alt="" style="width: 21rem;">
-        <p style="font-size: 28px; color: white; font-weight: bolder;">Sign up now and start watching from exxen.com, Google Play, AppGallery, App Store, Apple TV and Android TV on mobile, tablet, computer, anytime, anywhere.</p>
+        <p style="font-size: 28px; color: white; font-weight: bolder;">Sign up now and start watching from exxen.com,
+            Google Play, AppGallery, App Store, Apple TV and Android TV on mobile, tablet, computer, anytime, anywhere.
+        </p>
         <div class="store">
             <a href="#store"><img src="https://wimage.exxen.com/img/app-store-2.svg" alt=""></a>
             <a href="#store"><img src="https://wimage.exxen.com/img/google-play@3x.png" alt=""></a>
@@ -73,14 +116,17 @@
         <div class="helpdesk">
             <a href="#" class="exxenhelp">Exxen Help Desk</a>
             <div class="kunye">
-                <a href="#kunye" >Künye</a>
+                <a href="#kunye">Künye</a>
             </div>
         </div>
     </div>
-    <script src="/assset/js/main.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
+    <script src="/assset/js/main.js"></script>
 </body>
 
 </html>
