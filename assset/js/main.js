@@ -6,7 +6,7 @@ fetch('https://api.tvmaze.com/shows')
 var area = document.getElementById("films");
 function getMovies(movies) {
     let html = '<div class="row">';
-    for (let i = 0; i < movies.length && i < 11; i++) {
+    for (let i = 0; i < movies.length && i < 12; i++) {
         html += `
             <div class="col-md-4">
                 <div class="film">
@@ -99,6 +99,63 @@ function sortReverse(sortBy) {
             getMovies(data);
         });
 }
+document.getElementById("search").addEventListener("keyup", function(event) {
+    var searchInput = event.target.value;
+    
+    fetch(`https://api.tvmaze.com/search/shows?q=${searchInput}`)
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(item => {
+                getMoviesSearch(data)
+                console.log(item.show); 
+            });
+        })
+    // axios.get(`https://api.tvmaze.com/search/shows?q=${searchInput}`).then(response => {
+    //     html += ``   
+    // getMovies(response.data); 
+    // })
+});
+function getMoviesSearch(movies) {
+    let html = '<div class="row">';
+    for (let i = 0; i < movies.length && i < 12; i++) {
+        html += `
+            <div class="col-md-4">
+                <div class="film">
+                    <img src="${movies[i].show.image.medium}" class="filmsimgtop" alt="${movies[i].show.name}"data-bs-toggle="modal" data-bs-target="#info" data-image ="${movies[i].show.image.original}">
+                    <div class="movie-body">
+                        <h5 class="movie-title">${movies[i].show.name}</h5>
+                    </div>
+                    <a href="detail.html?id=${movies[i].show.id}" class="btn btn-primary"target=_blank>More Info</a>
+                </div>
+            </div>`;
+    }
+    html += '</div>';
+    area.innerHTML = html;
+
+    var filmsimgtops = document.querySelectorAll(".filmsimgtop");
+    filmsimgtops.forEach(img => {
+        img.addEventListener("click", function () {
+            var modalImage = document.getElementById("modalImage");
+            modalImage.src = this.getAttribute("data-image");
+        });
+    });
+}
+// Tam basa dusmemisem nece isleyir ama yazdim elave ozellik olsun )
+var currentPage = 1; 
+
+function loadMoreMovies() {
+    fetch(`https://api.tvmaze.com/shows`)
+        .then(res => res.json())
+        .then(data => {
+            
+            getMovies(data.slice((currentPage-1)* 12, currentPage * 12));
+            currentPage++; 
+        })
+}
+
+document.getElementById("loadMoreBtn").addEventListener("click", function() {
+    loadMoreMovies();
+});
 
 // var searchInput = document.getElementById("search");
 // searchInput.addEventListener("keyup");
